@@ -1,0 +1,60 @@
+<!-- index html -->
+{% extends "base.html" %}
+{% block title %}
+    男神的手机店铺
+{% endblock %}
+
+{% block content%}
+        <div>
+			<h2>
+				标题
+			</h2>
+			<p>
+				本可视化布局程序在HTML5浏览器上运行更加完美, 能实现自动本地化保存, 即使关闭了网页, 下一次打开仍然能恢复上一次的操作.
+			</p>
+			<p>
+				<a class="btn" href="#">查看更多 »</a>
+			</p>
+			<form class="form-search">
+				<input class="input-medium search-query" type="text" /> <button type="submit" class="btn">查找</button>
+			</form>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							品牌/型号
+						</th>
+						<th>
+							出厂年份
+						</th>
+						<th>
+							价格
+						</th>
+						<th>
+							摘要
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+                {% for p in products %}
+					<tr class="{% cycle 'success' 'warning' %}">
+						<td>
+                            <a href="{% url 'mobile-detail' p.pmodel.name %}" >{{p.pmodel.maker.name}}/{{p.pmodel}}</a>
+						</td>
+						<td>
+							{{p.year}}
+						</td>
+						<td>
+							{{p.price}}
+						</td>
+						<td>
+							{{p.nickname}}
+						</td>
+					</tr>
+                {% endfor %}
+
+					</tr>
+				</tbody>
+			</table>
+        </div>
+{% endblock %}
